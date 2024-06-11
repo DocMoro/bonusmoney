@@ -1,22 +1,19 @@
 import './App.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+import { TCompany } from '../../shared/constants/type'
+import { testData } from '../../shared/constants/var'
+import CompaniesList from '../CompaniesList/CompaniesList'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [companies, setCompanies] = useState<TCompany[]>([])
 
-  return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
-  )
+  useEffect(() => {
+    setCompanies(testData.companies)
+  }, [])
+
+  return <CompaniesList companies={companies} />
 }
 
 export default App

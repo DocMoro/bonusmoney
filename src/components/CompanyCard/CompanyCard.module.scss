@@ -1,0 +1,115 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  padding: var(--margin-red);
+  border-radius: 8vw;
+}
+
+.LogoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: var(--margin-yellow);
+  border-bottom: 1px solid var(--color-lightGrey);
+}
+
+.Logo {
+  width: 15vw;
+  height: 15vw;
+
+  object-position: center;
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+.Tittle {
+  font-weight: 400;
+  font-size: var(--size-text2);
+}
+
+.Mark {
+  font-weight: 700;
+  font-size: var(--size-text2);
+
+  margin-top: var(--margin-red);
+}
+
+.MarkText {
+  font-weight: 400;
+  font-size: var(--size-text3);
+
+  margin-left: var(--margin-yellow);
+}
+
+.Loyalty {
+  display: flex;
+  gap: var(--margin-blue);
+
+  margin-top: var(--margin-red);
+
+  padding-bottom: var(--margin-yellow);
+  border-bottom: 1px solid var(--color-lightGrey);
+}
+
+.LoyaltyCell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-yellow);
+}
+
+.LoyaltyTitle {
+  font-weight: 400;
+  font-size: var(--size-text4);
+}
+
+.LoyaltyText {
+  font-weight: 400;
+  font-size: var(--size-text3);
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.BtnContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-blue);
+
+  margin-top: var(--margin-yellow);
+}
+
+.BtnMore {
+  flex-grow: 1;
+
+  font-weight: 400;
+  font-size: var(--size-text3);
+
+  padding-top: var(--margin-yellow);
+  padding-bottom: var(--margin-yellow);
+
+  border-radius: var(--margin-yellow);
+}
+
+.BtnIcon {
+  width: var(--margin-red);
+  height: var(--margin-red);
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &_type {
+    &_eye {
+      background-image: url('../../shared/assets/img/eye_white.png');
+    }
+
+    &_trash {
+      background-image: url('../../shared/assets/img/trash_white.png');
+    }
+  }
+}

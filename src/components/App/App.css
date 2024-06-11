@@ -1,6 +1,23 @@
 #root {
-  max-width: 1280px;
-  min-width: 320px;
+  min-height: 100vh;
   margin: 0 auto;
   box-sizing: border-box;
+
+  --color-white: #fff;
+  --color-black: #1a1a1a;
+  --color-red: #ff3044;
+  --color-blue: #2688eb;
+  --color-garkGrey: #949494;
+  --color-lightGrey: #efefef;
+
+  --size-text1: 10vw;
+  --size-text2: 6vw;
+  --size-text3: 4vw;
+  --size-text4: 3vw;
+
+  --margin-yellow: 2vw;
+  --margin-red: 4vw;
+  --margin-blue: 20vw;
+
+  background-color: var(--color-lightGrey);
 }
