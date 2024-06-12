@@ -8,7 +8,7 @@ import { LIMIT } from '../../shared/constants/var'
 import CompaniesList from '../CompaniesList/CompaniesList'
 
 function App() {
-  const [getCompaniesByParams, { data }] = useGetCompaniesByParamsMutation()
+  const [getCompaniesByParams, { data, isLoading }] = useGetCompaniesByParamsMutation()
   const [companies, setCompanies] = useState<TCompany[]>([])
   const [offset, setOffset] = useState(0)
 
@@ -37,7 +37,7 @@ function App() {
     getCompaniesByParams({ offset: offset, limit: LIMIT })
   }, [])
 
-  return <CompaniesList companies={companies} />
+  return <CompaniesList companies={companies} isLoading={isLoading} />
 }
 
 export default App
