@@ -35,4 +35,6 @@ enum API_PATH {
   ERROR = 'getAllCompaniesError'
 }
 
-export { API_PATH, testData }
+const LIMIT = 10
+
+export { API_PATH, LIMIT, testData }
