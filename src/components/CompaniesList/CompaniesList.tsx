@@ -10,15 +10,15 @@ type TCompaniesList = {
   isLoading: boolean
 }
 
-const CompaniesList: FC<TCompaniesList> = ({ companies }) => {
+const CompaniesList: FC<TCompaniesList> = ({ companies, isLoading }) => {
   return (
     <section className={s.Companies}>
-      <Spinner width="20vw" height="20vw" />
       <ul className={s.List}>
-        {companies.map(companyData => (
-          <CompanyCard key={companyData.company.companyId} companyData={companyData} />
+        {companies.map((companyData, index) => (
+          <CompanyCard key={index} companyData={companyData} />
         ))}
       </ul>
+      {isLoading && <Spinner width="20vw" height="20vw" />}
     </section>
   )
 }
