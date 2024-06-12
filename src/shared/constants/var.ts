@@ -28,4 +28,11 @@ const testData = {
   ]
 }
 
-export { testData }
+enum API_PATH {
+  BASE = 'http://devapp.bonusmoney.pro/mobileapp/getAllCompanies',
+  IDEAL = 'Ideal',
+  LONG = 'Long',
+  ERROR = 'Error'
+}
+
+export { API_PATH, testData }
