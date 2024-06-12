@@ -23,7 +23,7 @@ export const companiesApi = createApi({
     }
   }),
   endpoints: builder => ({
-    getCompaniesByParams: builder.mutation<TBody, TResCompanies>({
+    getCompaniesByParams: builder.mutation<TResCompanies, TBody>({
       query: body => ({
         url: API_PATH.IDEAL,
         method: 'POST',

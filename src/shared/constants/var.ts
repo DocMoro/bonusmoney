@@ -29,10 +29,10 @@ const testData = {
 }
 
 enum API_PATH {
-  BASE = 'http://devapp.bonusmoney.pro/mobileapp/getAllCompanies',
-  IDEAL = 'Ideal',
-  LONG = 'Long',
-  ERROR = 'Error'
+  BASE = 'http://devapp.bonusmoney.pro/mobileapp/',
+  IDEAL = 'getAllCompaniesIdeal',
+  LONG = 'getAllCompaniesLong',
+  ERROR = 'getAllCompaniesError'
 }
 
 export { API_PATH, testData }
