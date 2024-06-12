@@ -1,4 +1,4 @@
-function HexToHSL(hex: string): { h: number; s: number; l: number } {
+/*function HexToHSL(hex: string): { h: number; s: number; l: number } {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
 
   if (!result) {
@@ -63,4 +63,4 @@ function getFilterByHex(hex: string) {
   return result
 }
 
-export { getFilterByHex }
+export { getFilterByHex } */

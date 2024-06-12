@@ -11,7 +11,7 @@ function App() {
   const [companies, setCompanies] = useState<TCompany[]>([])
 
   useEffect(() => {
-    getCompaniesByParams({ offset: 0, limit: 10 })
+    getCompaniesByParams({ offset: 10, limit: 10 })
   }, [])
 
   useEffect(() => {

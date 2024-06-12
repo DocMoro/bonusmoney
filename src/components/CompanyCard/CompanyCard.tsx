@@ -1,8 +1,8 @@
-import clsx from 'clsx'
 import { FC } from 'react'
 
 import { TCompany } from '../../shared/constants/type'
-import { getFilterByHex } from '../../shared/utils/pureFunc'
+import EyeIcon from '../../shared/ui/EyeIcon'
+import TrashIcon from '../../shared/ui/TrashIcon'
 import s from './CompanyCard.module.scss'
 
 type TCompanyCard = {
@@ -41,14 +41,12 @@ const CompanyCard: FC<TCompanyCard> = ({ companyData }) => {
         </div>
       </div>
       <div className={s.BtnContainer}>
-        <button
-          className={clsx(s.BtnIcon, s.BtnIcon_type_eye)}
-          style={{ filter: getFilterByHex(mobileAppDashboard.mainColor) }}
-        ></button>
-        <button
-          className={clsx(s.BtnIcon, s.BtnIcon_type_trash)}
-          style={{ filter: getFilterByHex(mobileAppDashboard.accentColor) }}
-        ></button>
+        <button>
+          <EyeIcon fill={mobileAppDashboard.mainColor} width="6vw" height="6vw" />
+        </button>
+        <button>
+          <TrashIcon fill={mobileAppDashboard.accentColor} width="6vw" height="6vw" />
+        </button>
         <button
           className={s.BtnMore}
           style={{ color: mobileAppDashboard.mainColor, backgroundColor: mobileAppDashboard.backgroundColor }}

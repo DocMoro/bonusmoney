@@ -94,22 +94,3 @@
 
   border-radius: var(--margin-yellow);
 }
-
-.BtnIcon {
-  width: var(--margin-red);
-  height: var(--margin-red);
-
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  &_type {
-    &_eye {
-      background-image: url('../../shared/assets/img/eye_white.png');
-    }
-
-    &_trash {
-      background-image: url('../../shared/assets/img/trash_white.png');
-    }
-  }
-}
