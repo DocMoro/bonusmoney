@@ -2,9 +2,10 @@ import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 
 import { useGetCompaniesByParamsMutation } from '../../service/companiesApi'
-import { TCompany } from '../../shared/constants/type'
-import { ERROR_MESSAGE, LIMIT } from '../../shared/constants/var'
+import { CustomErrorFetchQuery, TCompany } from '../../shared/constants/type'
+import { LIMIT } from '../../shared/constants/var'
 import Spinner from '../../shared/ui/Spinner/Spinner'
+import { getMessageError } from '../../shared/utils/pureFunc'
 import CompaniesList from '../CompaniesList/CompaniesList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import s from './CompaniesWidget.module.css'
@@ -19,41 +20,20 @@ const CompaniesWidget = () => {
     message: ''
   })
   const [isReboot, setIsReboot] = useState(false)
+  const [notCompains, setNotCompains] = useState(false)
 
   const handleRebout = () => {
+    setNotCompains(false)
     setIsReqActive(true)
     setOffset(0)
     setCompanies([])
-    getCompaniesByParams({ offset: offset, limit: LIMIT })
+    getCompaniesByParams({ offset: 0, limit: LIMIT })
   }
 
   useEffect(() => {
-    if (!reqIsActive) {
+    if (infoPopupData.isOpen) {
       return
     }
-    const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight
-      const currentHeight = document.documentElement.scrollTop + window.innerHeight
-      if (currentHeight + 10 >= scrollHeight) {
-        getCompaniesByParams({ offset: offset + LIMIT, limit: LIMIT })
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [offset])
-
-  useEffect(() => {
-    if (!error) {
-      return
-    }
-    const mess = ERROR_MESSAGE[error.status] || error.data.message
-    setInfoPopupData({
-      isOpen: true,
-      message: mess
-    })
-  }, [error])
-
-  useEffect(() => {
     let touchstartY = 0
     const handleTouchStart = (e: TouchEvent) => {
       touchstartY = e.touches[0].clientY
@@ -80,7 +60,36 @@ const CompaniesWidget = () => {
       document.removeEventListener('touchmove', handleTouchMove)
       document.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [isReboot])
+  }, [isReboot, infoPopupData])
+
+  useEffect(() => {
+    if (!reqIsActive) {
+      return
+    }
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight
+      const currentHeight = document.documentElement.scrollTop + window.innerHeight
+      if (currentHeight + 10 >= scrollHeight) {
+        getCompaniesByParams({ offset: offset + LIMIT, limit: LIMIT })
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [offset])
+
+  useEffect(() => {
+    if (!error) {
+      return
+    }
+    const message = getMessageError(error as CustomErrorFetchQuery)
+    setInfoPopupData({
+      isOpen: true,
+      message
+    })
+    if (companies.length === 0) {
+      setNotCompains(true)
+    }
+  }, [error])
 
   useEffect(() => {
     if (data) {
@@ -99,6 +108,7 @@ const CompaniesWidget = () => {
 
   return (
     <>
+      <p className={clsx(s.InfoMessage, notCompains && s.InfoMessageVisible)}>Нет компаний</p>
       <div className={clsx(s.TouchLoader, isReboot && s.TouchLoaderVisible)}>
         <Spinner width="10vw" height="10vw" />
       </div>

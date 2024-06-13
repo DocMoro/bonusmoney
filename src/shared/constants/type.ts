@@ -37,4 +37,13 @@ type TInfoPopupData = {
   message: string
 }
 
-export type { TCompany, TInfoPopupData }
+type TDataError = {
+  message: string
+}
+
+type CustomErrorFetchQuery = {
+  status: number
+  data: TDataError
+}
+
+export type { CustomErrorFetchQuery, TCompany, TInfoPopupData }

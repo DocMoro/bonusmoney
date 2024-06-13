@@ -1,6 +1,7 @@
+import type { BaseQueryFn, FetchArgs } from '@reduxjs/toolkit/query/react'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { TCompany } from '../shared/constants/type'
+import { CustomErrorFetchQuery, TCompany } from '../shared/constants/type'
 import { API_PATH } from '../shared/constants/var'
 
 type TBody = {
@@ -15,7 +16,7 @@ type TCompanies = {
 type TResCompanies = TBody & TCompanies
 
 export const companiesApi = createApi({
-  baseQuery: fetchBaseQuery({
+  baseQuery: <BaseQueryFn<string | FetchArgs, unknown, CustomErrorFetchQuery>>fetchBaseQuery({
     baseUrl: API_PATH.BASE,
     prepareHeaders: headers => {
       headers.set('TOKEN', '123')
@@ -25,7 +26,7 @@ export const companiesApi = createApi({
   endpoints: builder => ({
     getCompaniesByParams: builder.mutation<TResCompanies, TBody>({
       query: body => ({
-        url: API_PATH.IDEAL,
+        url: API_PATH.WORK,
         method: 'POST',
         keepUnusedDataFor: 5,
         body

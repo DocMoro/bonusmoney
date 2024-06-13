@@ -1,5 +1,6 @@
 .TouchLoader {
   position: fixed;
+  z-index: 1;
   top: -16vw;
   left: 50vw;
   transform: translateX(-50%);
@@ -20,4 +21,21 @@
 
 .TouchLoaderVisible {
   top: 30px;
+}
+
+.InfoMessage {
+  position: fixed;
+  top: 5vw;
+  left: 50vw;
+  transform: translateX(-50%);
+  opacity: 0;
+  font-weight: 400;
+  font-size: var(--size-text2);
+  text-align: center;
+  transition: opacity 0.3s linear;
+}
+
+.InfoMessageVisible {
+  display: inline;
+  opacity: 1;
 }

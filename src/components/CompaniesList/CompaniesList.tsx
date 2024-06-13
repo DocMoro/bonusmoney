@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { FC } from 'react'
 
 import { TCompany, TInfoPopupData } from '../../shared/constants/type'
@@ -23,12 +24,10 @@ const CompaniesList: FC<CompaniesListProps> = ({ companies, isLoading, setInfoPo
           />
         ))}
       </ul>
-      {isLoading && (
-        <div className={s.LoaderContainer}>
-          <Spinner width="20vw" height="20vw" />
-          <p className={s.LoaderText}>Подгрузка компаний</p>
-        </div>
-      )}
+      <div className={clsx(s.LoaderContainer, isLoading && s.LoaderContainerVisible)}>
+        <Spinner width="20vw" height="20vw" />
+        <p className={s.LoaderText}>Подгрузка компаний</p>
+      </div>
     </section>
   )
 }
