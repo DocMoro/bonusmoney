@@ -15,11 +15,15 @@ const CompaniesList: FC<CompaniesListProps> = ({ companies, isLoading, setInfoPo
   return (
     <section className={s.Companies}>
       <ul className={s.List}>
-        {companies.map((companyData, index) => (
-          <CompanyCard key={index} companyData={companyData} setInfoPopupData={setInfoPopupData} />
+        {companies.map(companyData => (
+          <CompanyCard
+            key={companyData.company.companyId}
+            companyData={companyData}
+            setInfoPopupData={setInfoPopupData}
+          />
         ))}
       </ul>
-      {isLoading && <Spinner width="20vw" height="20vw" />}
+      {isLoading && companies.length > 0 && <Spinner width="20vw" height="20vw" />}
     </section>
   )
 }

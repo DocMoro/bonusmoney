@@ -26,6 +26,10 @@ html {
   --margin-blue: 20vw;
 }
 
+body {
+  overscroll-behavior-y: auto;
+}
+
 button {
   background-color: transparent;
   border: none;
