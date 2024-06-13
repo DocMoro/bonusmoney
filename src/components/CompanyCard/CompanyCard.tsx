@@ -1,16 +1,24 @@
 import { FC } from 'react'
 
-import { TCompany } from '../../shared/constants/type'
+import { TCompany, TInfoPopupData } from '../../shared/constants/type'
 import EyeIcon from '../../shared/ui/EyeIcon'
 import TrashIcon from '../../shared/ui/TrashIcon'
 import s from './CompanyCard.module.scss'
 
-type TCompanyCard = {
+type CompanyCardProps = {
   companyData: TCompany
+  setInfoPopupData: (obj: TInfoPopupData) => void
 }
 
-const CompanyCard: FC<TCompanyCard> = ({ companyData }) => {
-  const { mobileAppDashboard, customerMarkParameters } = companyData
+const CompanyCard: FC<CompanyCardProps> = ({ companyData, setInfoPopupData }) => {
+  const { mobileAppDashboard, customerMarkParameters, company } = companyData
+
+  const handleButtonClick = (type: string) => {
+    setInfoPopupData({
+      isOpen: true,
+      message: `Нажата кнопка ${type}, id: ${company.companyId}`
+    })
+  }
 
   return (
     <li className={s.Card} style={{ backgroundColor: mobileAppDashboard.cardBackgroundColor }}>
@@ -41,13 +49,14 @@ const CompanyCard: FC<TCompanyCard> = ({ companyData }) => {
         </div>
       </div>
       <div className={s.BtnContainer}>
-        <button>
+        <button onClick={() => handleButtonClick('Показать')}>
           <EyeIcon fill={mobileAppDashboard.mainColor} width="6vw" height="6vw" />
         </button>
-        <button>
+        <button onClick={() => handleButtonClick('Удалить')}>
           <TrashIcon fill={mobileAppDashboard.accentColor} width="6vw" height="6vw" />
         </button>
         <button
+          onClick={() => handleButtonClick('Подробнее')}
           className={s.BtnMore}
           style={{ color: mobileAppDashboard.mainColor, backgroundColor: mobileAppDashboard.backgroundColor }}
         >

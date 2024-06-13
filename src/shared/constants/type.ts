@@ -32,4 +32,9 @@ type TCompany = {
   mobileAppDashboard: TMobileAppDashboard
 }
 
-export type { TCompany }
+type TInfoPopupData = {
+  isOpen: boolean
+  message: string
+}
+
+export type { TCompany, TInfoPopupData }

@@ -1,23 +1,22 @@
 import { FC } from 'react'
 
-import { TCompany } from '../../shared/constants/type'
+import { TCompany, TInfoPopupData } from '../../shared/constants/type'
 import Spinner from '../../shared/ui/Spinner/Spinner'
 import CompanyCard from '../CompanyCard/CompanyCard'
-import InfoPopup from '../InfoPopup/InfoPopup'
 import s from './CompaniesList.module.scss'
 
-type TCompaniesList = {
+type CompaniesListProps = {
   companies: TCompany[]
   isLoading: boolean
+  setInfoPopupData: (obj: TInfoPopupData) => void
 }
 
-const CompaniesList: FC<TCompaniesList> = ({ companies, isLoading }) => {
+const CompaniesList: FC<CompaniesListProps> = ({ companies, isLoading, setInfoPopupData }) => {
   return (
     <section className={s.Companies}>
-      <InfoPopup />
       <ul className={s.List}>
         {companies.map((companyData, index) => (
-          <CompanyCard key={index} companyData={companyData} />
+          <CompanyCard key={index} companyData={companyData} setInfoPopupData={setInfoPopupData} />
         ))}
       </ul>
       {isLoading && <Spinner width="20vw" height="20vw" />}

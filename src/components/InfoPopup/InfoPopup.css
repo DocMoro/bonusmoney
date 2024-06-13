@@ -32,6 +32,7 @@
 .DialogTitle {
   font-weight: 400;
   font-size: var(--size-text3);
+  text-align: center;
 }
 
 .BtnSave {

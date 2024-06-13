@@ -6,12 +6,17 @@ import { useGetCompaniesByParamsMutation } from '../../service/companiesApi'
 import { TCompany } from '../../shared/constants/type'
 import { LIMIT } from '../../shared/constants/var'
 import CompaniesList from '../CompaniesList/CompaniesList'
+import InfoPopup from '../InfoPopup/InfoPopup'
 
 function App() {
   const [getCompaniesByParams, { data, isLoading }] = useGetCompaniesByParamsMutation()
   const [companies, setCompanies] = useState<TCompany[]>([])
   const [reqIsActive, setIsReqActive] = useState(true)
   const [offset, setOffset] = useState(0)
+  const [infoPopupData, setInfoPopupData] = useState({
+    isOpen: false,
+    message: ''
+  })
 
   useEffect(() => {
     if (!reqIsActive) {
@@ -43,7 +48,12 @@ function App() {
     getCompaniesByParams({ offset: offset, limit: LIMIT })
   }, [])
 
-  return <CompaniesList companies={companies} isLoading={isLoading} />
+  return (
+    <>
+      <InfoPopup infoPopupData={infoPopupData} setInfoPopupData={setInfoPopupData} />
+      <CompaniesList companies={companies} isLoading={isLoading} setInfoPopupData={setInfoPopupData} />
+    </>
+  )
 }
 
 export default App
