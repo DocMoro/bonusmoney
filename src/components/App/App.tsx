@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react'
 
 import { useGetCompaniesByParamsMutation } from '../../service/companiesApi'
 import { TCompany } from '../../shared/constants/type'
-import { LIMIT } from '../../shared/constants/var'
+import { ERROR_MESSAGE, LIMIT } from '../../shared/constants/var'
 import CompaniesList from '../CompaniesList/CompaniesList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 
 function App() {
-  const [getCompaniesByParams, { data, isLoading }] = useGetCompaniesByParamsMutation()
+  const [getCompaniesByParams, { data, isLoading, error }] = useGetCompaniesByParamsMutation()
   const [companies, setCompanies] = useState<TCompany[]>([])
   const [reqIsActive, setIsReqActive] = useState(true)
   const [offset, setOffset] = useState(0)
@@ -32,6 +32,17 @@ function App() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [offset])
+
+  useEffect(() => {
+    if (!error) {
+      return
+    }
+    const mess = ERROR_MESSAGE[error.status] || error.data.message
+    setInfoPopupData({
+      isOpen: true,
+      message: mess
+    })
+  }, [error])
 
   useEffect(() => {
     if (data) {

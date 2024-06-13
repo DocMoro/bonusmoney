@@ -25,8 +25,9 @@ export const companiesApi = createApi({
   endpoints: builder => ({
     getCompaniesByParams: builder.mutation<TResCompanies, TBody>({
       query: body => ({
-        url: API_PATH.IDEAL,
+        url: API_PATH.ERROR,
         method: 'POST',
+        keepUnusedDataFor: 30,
         body
       })
     })

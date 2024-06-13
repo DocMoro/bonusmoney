@@ -28,6 +28,12 @@ const testData = {
   ]
 }
 
+const ERROR_MESSAGE = {
+  500: 'Всё упало',
+  400: null,
+  401: 'Ошибка авторизации'
+}
+
 enum API_PATH {
   BASE = 'http://devapp.bonusmoney.pro/mobileapp/',
   IDEAL = 'getAllCompaniesIdeal',
@@ -37,4 +43,4 @@ enum API_PATH {
 
 const LIMIT = 10
 
-export { API_PATH, LIMIT, testData }
+export { API_PATH, ERROR_MESSAGE, LIMIT, testData }
