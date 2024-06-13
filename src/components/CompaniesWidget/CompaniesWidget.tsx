@@ -20,6 +20,13 @@ const CompaniesWidget = () => {
   })
   const [isReboot, setIsReboot] = useState(false)
 
+  const handleRebout = () => {
+    setIsReqActive(true)
+    setOffset(0)
+    setCompanies([])
+    getCompaniesByParams({ offset: offset, limit: LIMIT })
+  }
+
   useEffect(() => {
     if (!reqIsActive) {
       return
@@ -62,7 +69,7 @@ const CompaniesWidget = () => {
     const handleTouchEnd = () => {
       if (isReboot) {
         setIsReboot(false)
-        location.reload()
+        handleRebout()
       }
     }
     document.addEventListener('touchstart', handleTouchStart)

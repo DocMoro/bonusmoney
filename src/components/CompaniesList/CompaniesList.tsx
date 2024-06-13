@@ -23,7 +23,12 @@ const CompaniesList: FC<CompaniesListProps> = ({ companies, isLoading, setInfoPo
           />
         ))}
       </ul>
-      {isLoading && companies.length > 0 && <Spinner width="20vw" height="20vw" />}
+      {isLoading && (
+        <div className={s.LoaderContainer}>
+          <Spinner width="20vw" height="20vw" />
+          <p className={s.LoaderText}>Подгрузка компаний</p>
+        </div>
+      )}
     </section>
   )
 }

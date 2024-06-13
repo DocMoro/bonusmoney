@@ -1,0 +1,22 @@
+.DialogOverlay {
+  background-color: var(--color-white);
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.DialogContent {
+  width: 50vw;
+  height: 50vw;
+  background-image: url('../../shared/assets/img/logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.DialogContent:focus {
+  outline: none;
+}
