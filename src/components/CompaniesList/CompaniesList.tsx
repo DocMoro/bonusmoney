@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { TCompany } from '../../shared/constants/type'
 import Spinner from '../../shared/ui/Spinner/Spinner'
 import CompanyCard from '../CompanyCard/CompanyCard'
+import InfoPopup from '../InfoPopup/InfoPopup'
 import s from './CompaniesList.module.scss'
 
 type TCompaniesList = {
@@ -13,6 +14,7 @@ type TCompaniesList = {
 const CompaniesList: FC<TCompaniesList> = ({ companies, isLoading }) => {
   return (
     <section className={s.Companies}>
+      <InfoPopup />
       <ul className={s.List}>
         {companies.map((companyData, index) => (
           <CompanyCard key={index} companyData={companyData} />
